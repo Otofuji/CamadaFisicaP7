@@ -141,8 +141,13 @@ def getKey():
 	sf = signalFrequency(key)
 	play(key)
 
-getKey();
+#getKey();
 
+
+def plotGeneratedSignal(key):
+	plt.plot(signalFrequency(key)[1],signalFrequency(key)[3])
+
+plt.plot(signalFrequency(8)[1],signalFrequency(8)[3])
 
 
 def listen():
@@ -175,17 +180,7 @@ def getSignal():
 	####################################################
 	pass
 
-def plotGenerateSignal():
-	####################################################
-	# OBJETIVOS:
 
-	####################################################
-	# AVALIAÇÃO:
-
-	# Gráfico de sinal emitido.
-
-	####################################################
-	pass
 
 def plotReceivedSignal():
 	####################################################
