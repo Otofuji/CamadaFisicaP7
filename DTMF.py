@@ -114,6 +114,10 @@ def signalFrequency(key):
 	}.get(key, None);
 
 
+def play(key):
+	sd.play(signalFrequency(key)[1] + signalFrequency(key)[3], 44100); sd.wait();
+
+
 def testSignalSound():
 	sd.play(signalFrequency(str(1))[1] + signalFrequency(str(1))[3], 44100); sd.wait();
 	sd.play(signalFrequency(str(2))[1] + signalFrequency(str(2))[3], 44100); sd.wait();
@@ -130,43 +134,15 @@ def testSignalSound():
 
 #testSignalSound();
 
+
+
 def getKey():
-	while True:
-	    try:
-	        if   keyboard.is_pressed('1'):
-	            return "1"
-	            break
-	        elif keyboard.is_pressed('1'):
-	            return "1"
-	            break
-	        else:
-	            pass
-	    except:
-	        break
+	key = str(input())
+	sf = signalFrequency(key)
+	play(key)
 
-def testKey():
-	key = input("Insira um número para transmitir: ");
-	print(str(key));
+getKey();
 
-#testKey();
-
-
-
-
-def play():
-	####################################################
-	# OBJETIVOS:
-
-	# Transmitir símbolos das keys do telefone
-	# Print da key pressionada
-
-	####################################################
-	# AVALIAÇÃO:
-
-	# Sinal gerado com sucesso e reproduzido no alto-falante ao pressionar key.
-
-	####################################################
-	pass
 
 
 def listen():
