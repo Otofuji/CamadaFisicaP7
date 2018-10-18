@@ -63,7 +63,7 @@ def calcFFT(signal, fs):
     yf = fft(signal*W)
     return(xf, np.abs(yf[0:N//2]))
 def plotFFT(signal, fs):
-    x,y = self.calcFFT(signal, fs)
+    x,y = calcFFT(signal, fs)
     plt.figure()
     plt.plot(x, np.abs(y))
     plt.title('Fourier')
@@ -165,40 +165,20 @@ def plotGeneratedSignal(key):
 #play(str(3));
 #plotGeneratedSignal(str(0));
 
-####################################################
-### UNDER CONSTRUCTION ###
-####################################################
 def getSignal():
 
-	abacate = sd.rec();
-	return abacate
+	abacate = sd.rec(441000, blocking=True);
+	plt.plot(abacate.T[1]); plt.show();
+	hertz, amplitude = calcFFT(getSignal(abacate, 4100))
+	return key;
 
-
-abacate = sd.rec(4410000);
-print(abacate);
+abacate = sd.rec(441000, blocking=True);
 plt.plot(abacate.T[1]); plt.show();
-sd.play(abacate, 44100);
-####################################################
-### UNDER CONSTRUCTION ###
-####################################################
+hertz, amplitude = calcFFT(abacate, 4100)
+print (hertz)
 
-def plotReceivedSignal(getSignal):
-	plt.plot(signalFrequency(key)[1][0:1000] + signalFrequency(key)[3][0:1000]); plt.show();
-
-
-def discoverReceivedSignal():
-	####################################################
-	# OBJETIVOS:
-
-	# Print da key pressionada
-
-	####################################################
-	# AVALIAÇÃO:
-
-	# Identificação correta da key pressionada pelo usuário.
-
-	####################################################
-	pass
+	
+	
 
 def plotFourier(discoverReceivedSignal):
 	plt.plot(signalFrequency(discoverReceivedSignal)[1][0:1000] + signalFrequency(discoverReceivedSignal)[3][0:1000]); plt.show();
@@ -212,7 +192,7 @@ def mainGenerate():
 	except:
 		pass
 
-mainGenerate()
+#mainGenerate()
 
 def mainReceive():
 	try:
