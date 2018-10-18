@@ -175,10 +175,50 @@ def getSignal():
 abacate = sd.rec(441000, blocking=True);
 plt.plot(abacate.T[1]); plt.show();
 hertz, amplitude = calcFFT(abacate, 4100)
-print (hertz)
+x = 0
+y = 0
+for i in len(hertz):
+	if hertz[i] in range (1208,1210);
+		x = 1209
+	elif hertz[i] in range (1335,1337);
+		x = 1336
+	elif hertz[i] in range (1476,1478);
+		x = 1477
+	elif hertz[i] in range (696,698);
+		y = 697
+	elif hertz[i] in range (769,771);
+		y = 770
+	elif hertz[i] in range (851,853);
+		y = 852
+	elif hertz[i] in range (940,942);
+		y = 941
 
-	
-	
+	if x == 1209 & y == 697:
+		key = "1"
+	elif x == 1336 & y == 697:
+		key = "2"
+	elif x == 1477 & y == 697:
+		key = "3"		
+	elif x == 1209 & y == 770:
+		key = "4"
+	elif x == 1336 & y == 770:
+		key = "5"
+	elif x == 1477 & y == 770:
+		key = "6"
+	elif x == 1209 & y == 852:
+		key = "7"
+	elif x == 1336 & y == 852:
+		key = "8"
+	elif x == 1477 & y == 852:
+		key = "9"
+	elif x == 1336 & y == 941:
+		key = "0"
+	elif x == 1209 & y == 941:
+		key = "*"
+	elif x == 1477 & y == 941:
+		key = "#"
+
+
 
 def plotFourier(discoverReceivedSignal):
 	plt.plot(signalFrequency(discoverReceivedSignal)[1][0:1000] + signalFrequency(discoverReceivedSignal)[3][0:1000]); plt.show();
