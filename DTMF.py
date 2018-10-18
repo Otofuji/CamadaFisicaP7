@@ -160,24 +160,24 @@ def getKey():
 
 
 def plotGeneratedSignal(key):
-	plt.plot(signalFrequency(key)[1][0:1000]+signalFrequency(key)[3][0:1000]); plt.show();
+	plt.plot(signalFrequency(key)[1][0:1000] + signalFrequency(key)[3][0:1000]); plt.show();
 
 #play(str(3));
 #plotGeneratedSignal(str(0));
 
-# ###################################################
+####################################################
 ### UNDER CONSTRUCTION ###
 ####################################################
-def getSignal():
+ def getSignal():
 
 	abacate = sd.rec();
 	return abacate
 
 
-#abacate = sd.rec(4410000);
-#print(abacate);
-#plt.plot(abacate.T[1]); plt.show();
-#sd.play(abacate, 44100);
+abacate = sd.rec(4410000);
+print(abacate);
+plt.plot(abacate.T[1]); plt.show();
+sd.play(abacate, 44100);
 ####################################################
 ### UNDER CONSTRUCTION ###
 ####################################################
