@@ -92,49 +92,67 @@ def signalFrequency(key):
 
 	####################################################
 	
-	signal = str(key)
-	return {
+	
 
-		"1": (generateSin(1209,21,1,44100) + generateSin(697,21,1,44100)),
-		"2": (generateSin(1336,21,1,44100) + generateSin(697,21,1,44100)),
-		"3": (generateSin(1477,21,1,44100) + generateSin(697,21,1,44100)),
-		"4": (generateSin(1209,21,1,44100) + generateSin(770,21,1,44100)),
-		"5": (generateSin(1336,21,1,44100) + generateSin(770,21,1,44100)),
-		"6": (generateSin(1477,21,1,44100) + generateSin(770,21,1,44100)),
-		"7": (generateSin(1209,21,1,44100) + generateSin(852,21,1,44100)),
-		"8": (generateSin(1336,21,1,44100) + generateSin(852,21,1,44100)),
-		"9": (generateSin(1477,21,1,44100) + generateSin(852,21,1,44100)),
-		"0": (generateSin(1336,21,1,44100) + generateSin(941,21,1,44100)),
-		"*": (generateSin(1209,21,1,44100) + generateSin(941,21,1,44100)),
-		"#": (generateSin(1477,21,1,44100) + generateSin(941,21,1,44100)),
+	try:
+		return {
 
-	}.get(signal, None);
+			"1": (generateSin(1209,21,1,44100) + generateSin(697,21,1,44100)),
+			"2": (generateSin(1336,21,1,44100) + generateSin(697,21,1,44100)),
+			"3": (generateSin(1477,21,1,44100) + generateSin(697,21,1,44100)),
+			"4": (generateSin(1209,21,1,44100) + generateSin(770,21,1,44100)),
+			"5": (generateSin(1336,21,1,44100) + generateSin(770,21,1,44100)),
+			"6": (generateSin(1477,21,1,44100) + generateSin(770,21,1,44100)),
+			"7": (generateSin(1209,21,1,44100) + generateSin(852,21,1,44100)),
+			"8": (generateSin(1336,21,1,44100) + generateSin(852,21,1,44100)),
+			"9": (generateSin(1477,21,1,44100) + generateSin(852,21,1,44100)),
+			"0": (generateSin(1336,21,1,44100) + generateSin(941,21,1,44100)),
+			"*": (generateSin(1209,21,1,44100) + generateSin(941,21,1,44100)),
+			"#": (generateSin(1477,21,1,44100) + generateSin(941,21,1,44100)),
+
+		}.get(key, None);
+	
+	except:
+		pass
 
 
 def play(key):
-	sd.play(signalFrequency(key)[1] + signalFrequency(key)[3], 44100); sd.wait();
+	try:
+		sd.play((signalFrequency(key)[1] + signalFrequency(key)[3]), 44100); sd.wait();
+	
+	except:
+		pass
 
 
 def testSignalSound():
-	sd.play(signalFrequency(str(1))[1] + signalFrequency(str(1))[3], 44100); sd.wait();
-	sd.play(signalFrequency(str(2))[1] + signalFrequency(str(2))[3], 44100); sd.wait();
-	sd.play(signalFrequency(str(3))[1] + signalFrequency(str(3))[3], 44100); sd.wait();
-	sd.play(signalFrequency(str(4))[1] + signalFrequency(str(4))[3], 44100); sd.wait();
-	sd.play(signalFrequency(str(5))[1] + signalFrequency(str(5))[3], 44100); sd.wait();
-	sd.play(signalFrequency(str(6))[1] + signalFrequency(str(6))[3], 44100); sd.wait();
-	sd.play(signalFrequency(str(7))[1] + signalFrequency(str(7))[3], 44100); sd.wait();
-	sd.play(signalFrequency(str(8))[1] + signalFrequency(str(8))[3], 44100); sd.wait();
-	sd.play(signalFrequency(str(9))[1] + signalFrequency(str(9))[3], 44100); sd.wait();
-	sd.play(signalFrequency(str(0))[1] + signalFrequency(str(0))[3], 44100); sd.wait();
-	sd.play(signalFrequency(   "*")[1] + signalFrequency(   "*")[3], 44100); sd.wait();
-	sd.play(signalFrequency(   "#")[1] + signalFrequency(   "#")[3], 44100); sd.wait();
+	try:
+		sd.play(signalFrequency(str(1))[1] + signalFrequency(str(1))[3], 44100); sd.wait();
+		sd.play(signalFrequency(str(2))[1] + signalFrequency(str(2))[3], 44100); sd.wait();
+		sd.play(signalFrequency(str(3))[1] + signalFrequency(str(3))[3], 44100); sd.wait();
+		sd.play(signalFrequency(str(4))[1] + signalFrequency(str(4))[3], 44100); sd.wait();
+		sd.play(signalFrequency(str(5))[1] + signalFrequency(str(5))[3], 44100); sd.wait();
+		sd.play(signalFrequency(str(6))[1] + signalFrequency(str(6))[3], 44100); sd.wait();
+		sd.play(signalFrequency(str(7))[1] + signalFrequency(str(7))[3], 44100); sd.wait();
+		sd.play(signalFrequency(str(8))[1] + signalFrequency(str(8))[3], 44100); sd.wait();
+		sd.play(signalFrequency(str(9))[1] + signalFrequency(str(9))[3], 44100); sd.wait();
+		sd.play(signalFrequency(str(0))[1] + signalFrequency(str(0))[3], 44100); sd.wait();
+		sd.play(signalFrequency(   "*")[1] + signalFrequency(   "*")[3], 44100); sd.wait();
+		sd.play(signalFrequency(   "#")[1] + signalFrequency(   "#")[3], 44100); sd.wait();
+	
+	except:
+		pass
 
 #testSignalSound();
 
 
 
 def getKey():
-	key = str(input()); sf = signalFrequency(key); play(key);
+	try:
+		key = str(input()); sf = signalFrequency(key);
+		return(key)
+	
+	except:
+		pass
 
 #getKey();
 
@@ -142,7 +160,8 @@ def getKey():
 def plotGeneratedSignal(key):
 	plt.plot(signalFrequency(key)); plt.show();
 
-#plotGeneratedSignal(3);
+#play(str(3));
+#plotGeneratedSignal(str(3));
 
 
 
@@ -209,14 +228,22 @@ def discoverReceivedSignal():
 	
 
 def mainGenerate():
-	key = getKey();
-	play(key);
-	plotGeneratedSignal(key);
+	try:
+		key = getKey();
+		play(key);
+		plotGeneratedSignal(key);
+	
+	except:
+		pass
 
-#mainGenerate()
+mainGenerate()
 
 def mainReceive():
-	pass
+	try:
+		pass
+	
+	except:
+		pass
 
 #mainReceive()
 
