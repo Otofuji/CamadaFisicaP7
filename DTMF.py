@@ -48,13 +48,11 @@ from scipy import signal as window
 
 ####################################################
 #SignalClass
-
 def generateSin(freq, amplitude, time, fs):
     n = time*fs
     x = np.linspace(0.0, time, n)
     s = amplitude*np.sin(freq*x*2*np.pi)
     return (x, s)
-
 def calcFFT(signal, fs):
     N  = len(signal)
     W = window.hamming(N)
@@ -62,7 +60,6 @@ def calcFFT(signal, fs):
     xf = np.linspace(0.0, 1.0/(2.0*T), N//2)
     yf = fft(signal*W)
     return(xf, np.abs(yf[0:N//2]))
-
 def plotFFT(signal, fs):
     x,y = self.calcFFT(signal, fs)
     plt.figure()
@@ -115,7 +112,7 @@ def signalFrequency(key):
 
 
 def play(key):
-	sd.play(signalFrequency(key)[1] + signalFrequency(key)[3], 44100); sd.wait();
+	sd.play(signalFrequency(str(key))[1] + signalFrequency(str(key))[3], 44100); sd.wait();
 
 
 def testSignalSound():
@@ -137,17 +134,16 @@ def testSignalSound():
 
 
 def getKey():
-	key = str(input())
-	sf = signalFrequency(key)
-	play(key)
+	key = str(input()); sf = signalFrequency(str(key)); play(str(key));
 
 #getKey();
 
 
 def plotGeneratedSignal(key):
-	plt.plot(signalFrequency(key)[1],signalFrequency(key)[3])
+	plt.plot(signalFrequency(str(key))); plt.show();
 
-plt.plot(signalFrequency(8)[1],signalFrequency(8)[3])
+#plotGeneratedSignal(str(3));
+
 
 
 def listen():
@@ -213,11 +209,11 @@ def discoverReceivedSignal():
 	
 
 def mainGenerate():
-	while True:
-		key = getKey()
-		signalFrequency(key)
+	key = getKey();
+	play(key);
+	plotGeneratedSignal(key);
 
-#mainGenerate():
+mainGenerate()
 
 def mainReceive():
 	pass
