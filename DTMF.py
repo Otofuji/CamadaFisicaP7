@@ -104,7 +104,7 @@ def signalFrequency(key):
 			"3": (generateSin(1477,21,1,44100) + generateSin(697,21,1,44100)),
 			"4": (generateSin(1209,21,1,44100) + generateSin(770,21,1,44100)),
 			"5": (generateSin(1336,21,1,44100) + generateSin(770,21,1,44100)),
-			"6": (generateSin(1477,21,1,44100) + generateSin(770,21,1,44100)),
+			"6": (generateSin(1477,21,80,44100) + generateSin(770,21,80,44100)),
 			"7": (generateSin(1209,21,1,44100) + generateSin(852,21,1,44100)),
 			"8": (generateSin(1336,21,1,44100) + generateSin(852,21,1,44100)),
 			"9": (generateSin(1477,21,1,44100) + generateSin(852,21,1,44100)),
@@ -167,59 +167,57 @@ def plotGeneratedSignal(key):
 
 def getSignal():
 
+	
+
 	abacate = sd.rec(441000, blocking=True);
 	plt.plot(abacate.T[1]); plt.show();
-	hertz, amplitude = calcFFT(getSignal(abacate, 4100))
-	return key;
+	hertz, amplitude = calcFFT(abacate, 4100)
+	x = 0
+	y = 0
+	key = "Abacaxi"
+	for i in len(hertz):
+		if hertz[i] in range (1208,1210):
+			x = 1209
+		elif hertz[i] in range (1335,1337):
+			x = 1336
+		elif hertz[i] in range (1476,1478):
+			x = 1477
+		elif hertz[i] in range (696,698):
+			y = 697
+		elif hertz[i] in range (769,771):
+			y = 770
+		elif hertz[i] in range (851,853):
+			y = 852
+		elif hertz[i] in range (940,942):
+			y = 941
 
-abacate = sd.rec(441000, blocking=True);
-plt.plot(abacate.T[1]); plt.show();
-hertz, amplitude = calcFFT(abacate, 4100)
-x = 0
-y = 0
-key = "Abacaxi"
-for i in len(hertz):
-	if hertz[i] in range (1208,1210);
-		x = 1209
-	elif hertz[i] in range (1335,1337);
-		x = 1336
-	elif hertz[i] in range (1476,1478);
-		x = 1477
-	elif hertz[i] in range (696,698);
-		y = 697
-	elif hertz[i] in range (769,771);
-		y = 770
-	elif hertz[i] in range (851,853);
-		y = 852
-	elif hertz[i] in range (940,942);
-		y = 941
+	if  x == 1209 & y == 697:
+		key = "1"
+	elif x == 1336 & y == 697:
+		key = "2"
+	elif x == 1477 & y == 697:
+		key = "3"		
+	elif x == 1209 & y == 770:
+		key = "4"
+	elif x == 1336 & y == 770:
+		key = "5"
+	elif x == 1477 & y == 770:
+		key = "6"
+	elif x == 1209 & y == 852:
+		key = "7"
+	elif x == 1336 & y == 852:
+		key = "8"
+	elif x == 1477 & y == 852:
+		key = "9"
+	elif x == 1336 & y == 941:
+		key = "0"
+	elif x == 1209 & y == 941:
+		key = "*"
+	elif x == 1477 & y == 941:
+		key = "#"
 
-if  x == 1209 & y == 697:
-	key = "1"
-elif x == 1336 & y == 697:
-	key = "2"
-elif x == 1477 & y == 697:
-	key = "3"		
-elif x == 1209 & y == 770:
-	key = "4"
-elif x == 1336 & y == 770:
-	key = "5"
-elif x == 1477 & y == 770:
-	key = "6"
-elif x == 1209 & y == 852:
-	key = "7"
-elif x == 1336 & y == 852:
-	key = "8"
-elif x == 1477 & y == 852:
-	key = "9"
-elif x == 1336 & y == 941:
-	key = "0"
-elif x == 1209 & y == 941:
-	key = "*"
-elif x == 1477 & y == 941:
-	key = "#"
-
-print(key)
+	print(key)
+	return key
 
 
 def plotFourier(discoverReceivedSignal):
