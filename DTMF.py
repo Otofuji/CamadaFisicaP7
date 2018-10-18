@@ -35,6 +35,8 @@
 #from SignalClass import * #class Signal
 import numpy as np
 import sounddevice as sd
+sd.default.samplerate = 44100
+sd.default.channels = 2
 import matplotlib.pyplot as plt
 import wave
 import time
@@ -164,37 +166,15 @@ def plotGeneratedSignal(key):
 #plotGeneratedSignal(str(3));
 
 
-
-def listen():
-	####################################################
-	# OBJETIVOS:
-
-	# Receber símbolos das keys do telefone
-	# Transmissão deve ser realizada em alguns segundos (parâmetro do código)
-	# Aplicação deve investigar o sinal pelos símbolos a cada 1 segundo
-
-	####################################################
-	# AVALIAÇÃO:
-
-	####################################################
-	pass
-
 def getSignal():
-	####################################################
-	# OBJETIVOS:
 
-	# Aplicação deve investigar o sinal pelos símbolos a cada 1 segundo
-	# Plotar gráfico do sinal recebido e dos harmônicos (Fourier)
+	abacate = sd.rec();
+	return abacate
 
-	####################################################
-	# AVALIAÇÃO:
-
-	# Recepção e Fourier do sinal recebido com identificação dos picos.
-	# Identificação correta da key pressionada pelo usuário.
-
-	####################################################
-	pass
-
+abacate = sd.rec(4410000);
+print(abacate);
+plt.plot(abacate.T[1]); plt.show();
+sd.play(abacate, 44100);
 
 
 def plotReceivedSignal():
@@ -236,7 +216,7 @@ def mainGenerate():
 	except:
 		pass
 
-mainGenerate()
+#mainGenerate()
 
 def mainReceive():
 	try:
