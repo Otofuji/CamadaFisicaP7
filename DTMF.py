@@ -177,6 +177,7 @@ plt.plot(abacate.T[1]); plt.show();
 hertz, amplitude = calcFFT(abacate, 4100)
 x = 0
 y = 0
+key = "Abacaxi"
 for i in len(hertz):
 	if hertz[i] in range (1208,1210);
 		x = 1209
@@ -193,7 +194,7 @@ for i in len(hertz):
 	elif hertz[i] in range (940,942);
 		y = 941
 
-if x == 1209 & y == 697:
+if  x == 1209 & y == 697:
 	key = "1"
 elif x == 1336 & y == 697:
 	key = "2"
@@ -218,6 +219,7 @@ elif x == 1209 & y == 941:
 elif x == 1477 & y == 941:
 	key = "#"
 
+print(key)
 
 
 def plotFourier(discoverReceivedSignal):
