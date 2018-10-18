@@ -168,7 +168,7 @@ def plotGeneratedSignal(key):
 ####################################################
 ### UNDER CONSTRUCTION ###
 ####################################################
- def getSignal():
+def getSignal():
 
 	abacate = sd.rec();
 	return abacate
@@ -182,20 +182,9 @@ sd.play(abacate, 44100);
 ### UNDER CONSTRUCTION ###
 ####################################################
 
-def plotReceivedSignal():
-	####################################################
-	# OBJETIVOS:
+def plotReceivedSignal(getSignal):
+	plt.plot(signalFrequency(key)[1][0:1000] + signalFrequency(key)[3][0:1000]); plt.show();
 
-	# Plotar gráfico do sinal recebido e dos harmônicos (Fourier)
-	# Print da key pressionada
-
-	####################################################
-	# AVALIAÇÃO:
-
-	# Gráfico do sinal recebido e gráfico dos harmônicos
-
-	####################################################
-	pass
 
 def discoverReceivedSignal():
 	####################################################
@@ -210,7 +199,9 @@ def discoverReceivedSignal():
 
 	####################################################
 	pass
-	
+
+def plotFourier(discoverReceivedSignal):
+	plt.plot(signalFrequency(discoverReceivedSignal)[1][0:1000] + signalFrequency(discoverReceivedSignal)[3][0:1000]); plt.show();
 
 def mainGenerate():
 	try:
@@ -229,6 +220,7 @@ def mainReceive():
 		key = discoverReceivedSignal(listened);
 		print(key);
 		plotReceivedSignal(listened);
+		plotFourier(discoverReceivedSignal);
 	
 	except:
 		pass
