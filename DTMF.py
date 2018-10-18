@@ -165,17 +165,22 @@ def plotGeneratedSignal(key):
 #play(str(3));
 plotGeneratedSignal(str(0));
 
-
+####################################################
+### UNDER CONSTRUCTION ###
+####################################################
 def getSignal():
 
 	abacate = sd.rec();
 	return abacate
 
+
 abacate = sd.rec(4410000);
 print(abacate);
 plt.plot(abacate.T[1]); plt.show();
 sd.play(abacate, 44100);
-
+####################################################
+### UNDER CONSTRUCTION ###
+####################################################
 
 def plotReceivedSignal():
 	####################################################
