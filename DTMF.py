@@ -193,30 +193,30 @@ for i in len(hertz):
 	elif hertz[i] in range (940,942);
 		y = 941
 
-	if x == 1209 & y == 697:
-		key = "1"
-	elif x == 1336 & y == 697:
-		key = "2"
-	elif x == 1477 & y == 697:
-		key = "3"		
-	elif x == 1209 & y == 770:
-		key = "4"
-	elif x == 1336 & y == 770:
-		key = "5"
-	elif x == 1477 & y == 770:
-		key = "6"
-	elif x == 1209 & y == 852:
-		key = "7"
-	elif x == 1336 & y == 852:
-		key = "8"
-	elif x == 1477 & y == 852:
-		key = "9"
-	elif x == 1336 & y == 941:
-		key = "0"
-	elif x == 1209 & y == 941:
-		key = "*"
-	elif x == 1477 & y == 941:
-		key = "#"
+if x == 1209 & y == 697:
+	key = "1"
+elif x == 1336 & y == 697:
+	key = "2"
+elif x == 1477 & y == 697:
+	key = "3"		
+elif x == 1209 & y == 770:
+	key = "4"
+elif x == 1336 & y == 770:
+	key = "5"
+elif x == 1477 & y == 770:
+	key = "6"
+elif x == 1209 & y == 852:
+	key = "7"
+elif x == 1336 & y == 852:
+	key = "8"
+elif x == 1477 & y == 852:
+	key = "9"
+elif x == 1336 & y == 941:
+	key = "0"
+elif x == 1209 & y == 941:
+	key = "*"
+elif x == 1477 & y == 941:
+	key = "#"
 
 
 
