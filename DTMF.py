@@ -13,13 +13,13 @@
 ####################################################
 # OBJETIVOS:
 
-# Transmitir símbolos das keys do telefone
-# Receber símbolos das keys do telefone
-# Usuário deve keyr valor a ser transmitido ao rodar a transmissão
-# Transmissão deve ser realizada em alguns segundos (parâmetro do código)
-# Aplicação deve investigar o sinal pelos símbolos a cada 1 segundo
-# Plotar gráfico do sinal recebido e dos harmônicos (Fourier)
-# Print da key pressionada
+# Transmitir símbolos das keys do telefone.
+# Receber símbolos das keys do telefone.
+# Usuário deve keyr valor a ser transmitido ao rodar a transmissão.
+# Transmissão deve ser realizada em alguns segundos (parâmetro do código).
+# Aplicação deve investigar o sinal pelos símbolos a cada 1 segundo.
+# Plotar gráfico do sinal recebido e dos harmônicos (Fourier).
+# Print da key pressionada.
 
 ####################################################
 # AVALIAÇÃO:
@@ -27,7 +27,7 @@
 # Sinal gerado com sucesso e reproduzido no alto-falante ao pressionar key.
 # Gráfico de sinal emitido.
 # Recepção e Fourier do sinal recebido com identificação dos picos.
-# Gráfico do sinal recebido e gráfico dos harmônicos
+# Gráfico do sinal recebido e gráfico dos harmônicos.
 # Identificação correta da key pressionada pelo usuário.
 
 ####################################################
@@ -163,7 +163,7 @@ def plotGeneratedSignal(key):
 	plt.plot(signalFrequency(key)); plt.show();
 
 #play(str(3));
-#plotGeneratedSignal(str(3));
+plotGeneratedSignal(str(3));
 
 
 def getSignal():
@@ -220,7 +220,10 @@ def mainGenerate():
 
 def mainReceive():
 	try:
-		pass
+		listened = getSignal();
+		key = discoverReceivedSignal(listened);
+		print(key);
+		plotReceivedSignal(listened);
 	
 	except:
 		pass
