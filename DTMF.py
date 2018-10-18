@@ -160,10 +160,10 @@ def getKey():
 
 
 def plotGeneratedSignal(key):
-	plt.plot(signalFrequency(key)); plt.show();
+	plt.plot(signalFrequency(key)[1][0:1000]+signalFrequency(key)[3][0:1000]); plt.show();
 
 #play(str(3));
-plotGeneratedSignal(str(3));
+plotGeneratedSignal(str(0));
 
 
 def getSignal():
