@@ -113,7 +113,7 @@ def signalFrequency(key):
 
 def play(key):
 	sd.play(signalFrequency(str(key))[1] + signalFrequency(str(key))[3], 44100); sd.wait();
-
+play(3)
 
 def testSignalSound():
 	sd.play(signalFrequency(str(1))[1] + signalFrequency(str(1))[3], 44100); sd.wait();
@@ -213,7 +213,7 @@ def mainGenerate():
 	play(key);
 	plotGeneratedSignal(key);
 
-mainGenerate()
+#mainGenerate()
 
 def mainReceive():
 	pass
