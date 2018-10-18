@@ -92,7 +92,7 @@ def signalFrequency(key):
 
 	####################################################
 	
-
+	signal = str(key)
 	return {
 
 		"1": (generateSin(1209,21,1,44100) + generateSin(697,21,1,44100)),
@@ -108,12 +108,12 @@ def signalFrequency(key):
 		"*": (generateSin(1209,21,1,44100) + generateSin(941,21,1,44100)),
 		"#": (generateSin(1477,21,1,44100) + generateSin(941,21,1,44100)),
 
-	}.get(key, None);
+	}.get(signal, None);
 
 
 def play(key):
-	sd.play(signalFrequency(str(key))[1] + signalFrequency(str(key))[3], 44100); sd.wait();
-play(3)
+	sd.play(signalFrequency(key)[1] + signalFrequency(key)[3], 44100); sd.wait();
+
 
 def testSignalSound():
 	sd.play(signalFrequency(str(1))[1] + signalFrequency(str(1))[3], 44100); sd.wait();
@@ -134,15 +134,15 @@ def testSignalSound():
 
 
 def getKey():
-	key = str(input()); sf = signalFrequency(str(key)); play(str(key));
+	key = str(input()); sf = signalFrequency(key); play(key);
 
 #getKey();
 
 
 def plotGeneratedSignal(key):
-	plt.plot(signalFrequency(str(key))); plt.show();
+	plt.plot(signalFrequency(key)); plt.show();
 
-#plotGeneratedSignal(str(3));
+#plotGeneratedSignal(3);
 
 
 
