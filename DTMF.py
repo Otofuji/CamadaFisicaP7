@@ -174,7 +174,7 @@ def getSignal():
 	abacate = sd.rec(44100, blocking = True);
 	plt.plot(abacate.T[1]); 
 	plotFFT(abacate[:,1], 44100)
-	hertz, amplitude = calcFFT(abacate[:,1], 4100)
+	hertz, amplitude = calcFFT(abacate[:,1], 44100)
 	x = 0
 	y = 0
 	key = "Abacaxi"
@@ -265,6 +265,7 @@ def getSignal():
 		print("DESCOBERTO: ",key)
 		return key
 	else:
+		print("None")
 		pass
 
 
@@ -272,11 +273,6 @@ def getSignal():
 getSignal();
 	
 
-
-
-
-def plotFourier(discoverReceivedSignal):
-	plt.plot(signalFrequency(discoverReceivedSignal)[1][0:1000] + signalFrequency(discoverReceivedSignal)[3][0:1000]); plt.show();
 
 
 
