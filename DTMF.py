@@ -190,7 +190,7 @@ def getSignal():
 	b = np.argmax(amplitude)
 	print (a)
 	print (b)
-	indexes = peakutils.indexes(amplitude, hertz)
+	indexes = peakutils.indexes(amplitude, 0.5, 30)
 	print ("INDEXES: ",indexes)
 	plotFFT(abacate[0], 44100)
 
@@ -210,27 +210,27 @@ def getSignal():
 # 			else:
 # 				taken = False;
 
-			
-
-
-	print (candidates)
-
 
 	for i in range(0,len(indexes)):
-		if indexes[i] in range (1196,1221):
+		if hertz[i] in range (1196,1221):
 			x = 1209
-		elif indexes[i] in range (1321,1350):
-			x = 1336
-		elif indexes[i] in range (1462,1492):
-			x = 1477
-		elif indexes[i] in range (690,704):
+		else:
+			if hertz[i] in range (1321,1350):
+				x = 1336
+			else:
+				if hertz[i] in range (1462,1492):
+					x = 1477
+		if hertz[i] in range (690,704):
 			y = 697
-		elif indexes[i] in range (762,778):
-			y = 770
-		elif indexes[i] in range (843,861):
-			y = 852
-		elif indexes[i] in range (930,951):
-			y = 941
+		else:
+			if hertz[i] in range (762,778):
+				y = 770
+			else:
+				if hertz[i] in range (843,861):
+					y = 852
+				else:
+					if hertz[i] in range (930,951):
+						y = 941
 
 	if y == 697:
 		if x == 1209:
@@ -294,15 +294,12 @@ def mainGenerate():
 #mainGenerate()
 
 def mainReceive():
-	try:
-		listened = getSignal();
-		key = discoverReceivedSignal(listened);
-		print(key);
-		plotReceivedSignal(listened);
-		plotFourier(discoverReceivedSignal);
-	
-	except:
-		pass
+	while True:
+		try:
+			getSignal();
+		
+		except:
+			pass
 
 
 
