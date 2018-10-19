@@ -62,7 +62,7 @@ def calcFFT(signal, fs):
     N  = len(signal)
     W = window.hamming(N)
     T  = 1/fs
-    xf = np.linspace(0.0, 1.0/(2.0*T), N//2)
+    xf = np.linspace(0.0, 1.0/(88200), N//2)
     yf = fft(signal*W)
     return(xf, np.abs(yf[0:N//2]))
 
@@ -194,7 +194,7 @@ def getSignal():
 
 	abacate = sd.rec(441000, blocking = True);
 	plt.plot(abacate.T[1]); plt.show();
-	hertz, amplitude = calcFFT(abacate, 4100)
+	hertz, amplitude = calcFFT(abacate[0], 4100)
 	x = 0
 	y = 0
 	key = "Abacaxi"
@@ -202,17 +202,24 @@ def getSignal():
 	candidates = []
 	a = np.argmax(amplitude)
 	candidates.append(a)
-	amplitude.remove(a)
+	np.delete(amplitude, a)
 	b = np.argmax(amplitude)
 	candidates.append(b)
-	amplitude.remove(b)
+	np.delete(amplitude, b)
 	c = np.argmax(amplitude)
 	candidates.append(c)
-	amplitude.remove(c)
+	np.delete(amplitude, c)
+	d = np.argmax(amplitude)
+	candidates.append(d)
+	np.delete(amplitude, d)
+	e = np.argmax(amplitude)
+	candidates.append(e)
+	np.delete(amplitude, e)
 
 
 
-	for i in len(candidates):
+
+	for i in candidates:
 		if candidates[i] in range (1196,1221):
 			x = 1209
 		elif candidates[i] in range (1321,1350):
@@ -261,7 +268,7 @@ def getSignal():
 		print(key)
 		return key
 	else:
-		pass
+		print("Nenhuma frequencia familar identificada.")
 
 
 
