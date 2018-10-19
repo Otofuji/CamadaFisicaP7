@@ -145,18 +145,18 @@ def play(key):
 
 def testSignalSound():
 	try:
-		sd.play(signalFrequency(str(1))[1] + signalFrequency(str(1))[3], 44100); sd.wait();
-		sd.play(signalFrequency(str(2))[1] + signalFrequency(str(2))[3], 44100); sd.wait();
-		sd.play(signalFrequency(str(3))[1] + signalFrequency(str(3))[3], 44100); sd.wait();
-		sd.play(signalFrequency(str(4))[1] + signalFrequency(str(4))[3], 44100); sd.wait();
-		sd.play(signalFrequency(str(5))[1] + signalFrequency(str(5))[3], 44100); sd.wait();
-		sd.play(signalFrequency(str(6))[1] + signalFrequency(str(6))[3], 44100); sd.wait();
-		sd.play(signalFrequency(str(7))[1] + signalFrequency(str(7))[3], 44100); sd.wait();
-		sd.play(signalFrequency(str(8))[1] + signalFrequency(str(8))[3], 44100); sd.wait();
-		sd.play(signalFrequency(str(9))[1] + signalFrequency(str(9))[3], 44100); sd.wait();
-		sd.play(signalFrequency(str(0))[1] + signalFrequency(str(0))[3], 44100); sd.wait();
-		sd.play(signalFrequency(   "*")[1] + signalFrequency(   "*")[3], 44100); sd.wait();
-		sd.play(signalFrequency(   "#")[1] + signalFrequency(   "#")[3], 44100); sd.wait();
+		sd.play(signalFrequency(str(1))[1] + signalFrequency(str(1))[3], 44100); sd.wait(); sd.wait(); sd.wait();
+		sd.play(signalFrequency(str(2))[1] + signalFrequency(str(2))[3], 44100); sd.wait(); sd.wait(); sd.wait();
+		sd.play(signalFrequency(str(3))[1] + signalFrequency(str(3))[3], 44100); sd.wait(); sd.wait(); sd.wait();
+		sd.play(signalFrequency(str(4))[1] + signalFrequency(str(4))[3], 44100); sd.wait(); sd.wait(); sd.wait();
+		sd.play(signalFrequency(str(5))[1] + signalFrequency(str(5))[3], 44100); sd.wait(); sd.wait(); sd.wait();
+		sd.play(signalFrequency(str(6))[1] + signalFrequency(str(6))[3], 44100); sd.wait(); sd.wait(); sd.wait();
+		sd.play(signalFrequency(str(7))[1] + signalFrequency(str(7))[3], 44100); sd.wait(); sd.wait(); sd.wait();
+		sd.play(signalFrequency(str(8))[1] + signalFrequency(str(8))[3], 44100); sd.wait(); sd.wait(); sd.wait();
+		sd.play(signalFrequency(str(9))[1] + signalFrequency(str(9))[3], 44100); sd.wait(); sd.wait(); sd.wait();
+		sd.play(signalFrequency(str(0))[1] + signalFrequency(str(0))[3], 44100); sd.wait(); sd.wait(); sd.wait();
+		sd.play(signalFrequency(   "*")[1] + signalFrequency(   "*")[3], 44100); sd.wait(); sd.wait(); sd.wait();
+		sd.play(signalFrequency(   "#")[1] + signalFrequency(   "#")[3], 44100); sd.wait(); sd.wait(); sd.wait();
 	
 	except:
 		pass
@@ -185,41 +185,47 @@ def plotGeneratedSignal(key):
 
 
 
-#play(str(3));
+#play(str(1));
 #plotGeneratedSignal(str(0));
 
 def getSignal():
 
 	
 
-	abacate = sd.rec(441000, blocking = True);
-	plt.plot(abacate.T[1]); plt.show();
-	hertz, amplitude = calcFFT(abacate[0], 4100)
+	abacate = sd.rec(44100, blocking = True);
+	plt.plot(abacate.T[1]); #plt.show();
+	hertz, amplitude = calcFFT(abacate[:,1], 4100)
 	x = 0
 	y = 0
 	key = "Abacaxi"
 	
+	#hertz = hertz * 100
 	candidates = []
-	a = np.argmax(amplitude)
-	candidates.append(a)
-	np.delete(amplitude, a)
-	b = np.argmax(amplitude)
-	candidates.append(b)
-	np.delete(amplitude, b)
-	c = np.argmax(amplitude)
-	candidates.append(c)
-	np.delete(amplitude, c)
-	d = np.argmax(amplitude)
-	candidates.append(d)
-	np.delete(amplitude, d)
-	e = np.argmax(amplitude)
-	candidates.append(e)
-	np.delete(amplitude, e)
+
+	flag = 0
+	taken = False
+
+	for a in amplitude:
+		while flag < 5:
+			for i in range(0,len(candidates)):
+				if candidates[i] == amplitude[a]:
+					taken = True
+
+			if taken == False:
+				a = np.argmax(amplitude);
+				candidates.append(a)
+				flag += 1
+				np.delete(amplitude, a)
+			else:
+				taken = False;
+
+			
 
 
+	print (candidates)
 
 
-	for i in candidates:
+	for i in range(0,len(candidates)):
 		if candidates[i] in range (1196,1221):
 			x = 1209
 		elif candidates[i] in range (1321,1350):
@@ -268,11 +274,14 @@ def getSignal():
 		print(key)
 		return key
 	else:
-		print("Nenhuma frequencia familar identificada.")
+		pass
 
 
 
 getSignal();
+
+
+
 def plotFourier(discoverReceivedSignal):
 	plt.plot(signalFrequency(discoverReceivedSignal)[1][0:1000] + signalFrequency(discoverReceivedSignal)[3][0:1000]); plt.show();
 
