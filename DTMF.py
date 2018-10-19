@@ -73,6 +73,7 @@ def plotFFT(signal, fs):
     plt.figure()
     plt.plot(x, np.abs(y))
     plt.title('Fourier')
+    plt.show()
 
 
 
@@ -171,7 +172,8 @@ def getSignal():
 	
 
 	abacate = sd.rec(44100, blocking = True);
-	plt.plot(abacate.T[1]); #plt.show();
+	plt.plot(abacate.T[1]); 
+	plotFFT(abacate[:,1], 44100)
 	hertz, amplitude = calcFFT(abacate[:,1], 4100)
 	x = 0
 	y = 0
@@ -183,19 +185,30 @@ def getSignal():
 	flag = 0
 	taken = False
 
-	for a in amplitude:
-		while flag < 5:
-			for i in range(0,len(candidates)):
-				if candidates[i] == amplitude[a]:
-					taken = True
+	a = np.argmax(amplitude)
+	np.delete(amplitude, a)
+	b = np.argmax(amplitude)
+	print (a)
+	print (b)
+	indexes = peakutils.indexes(amplitude, hertz)
+	print ("INDEXES: ",indexes)
+	plotFFT(abacate[0], 44100)
 
-			if taken == False:
-				a = np.argmax(amplitude);
-				candidates.append(a)
-				flag += 1
-				np.delete(amplitude, a)
-			else:
-				taken = False;
+
+
+# 	for a in amplitude:
+# 		while flag < 5:
+# 			for i in range(0,len(candidates)):
+# 				if candidates[i] == amplitude[a]:
+# 					taken = True
+# a = np.argmax(amplitude);
+# 				candidates.append(a)
+# 				flag += 1
+# 				np.delete(amplitude, 
+# 			if taken == False:
+# 				a)
+# 			else:
+# 				taken = False;
 
 			
 
@@ -203,20 +216,20 @@ def getSignal():
 	print (candidates)
 
 
-	for i in range(0,len(candidates)):
-		if candidates[i] in range (1196,1221):
+	for i in range(0,len(indexes)):
+		if indexes[i] in range (1196,1221):
 			x = 1209
-		elif candidates[i] in range (1321,1350):
+		elif indexes[i] in range (1321,1350):
 			x = 1336
-		elif candidates[i] in range (1462,1492):
+		elif indexes[i] in range (1462,1492):
 			x = 1477
-		elif candidates[i] in range (690,704):
+		elif indexes[i] in range (690,704):
 			y = 697
-		elif candidates[i] in range (762,778):
+		elif indexes[i] in range (762,778):
 			y = 770
-		elif candidates[i] in range (843,861):
+		elif indexes[i] in range (843,861):
 			y = 852
-		elif candidates[i] in range (930,951):
+		elif indexes[i] in range (930,951):
 			y = 941
 
 	if y == 697:
@@ -249,7 +262,7 @@ def getSignal():
 			key = "#"
 
 	if key != "Abacaxi":
-		print(key)
+		print("DESCOBERTO: ",key)
 		return key
 	else:
 		pass
@@ -257,6 +270,8 @@ def getSignal():
 
 
 getSignal();
+	
+
 
 
 
