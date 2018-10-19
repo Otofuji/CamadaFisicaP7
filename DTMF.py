@@ -119,7 +119,7 @@ def signalFrequency(key):
 			"9": (generateSin(1477,21,1,44100) + generateSin(852,21,1,44100)),
 			"0": (generateSin(1336,21,1,44100) + generateSin(941,21,1,44100)),
 			"*": (generateSin(1209,21,1,44100) + generateSin(941,21,1,44100)),
-			"#": (generateSin(1477,21,1,44100) + generateSin(941,21,1,44100)),
+			"#": (generateSin(1477,21,1,44100) + generateSin(941,21,1,44100))
 
 		}.get(key, None);
 	
@@ -199,46 +199,51 @@ def getSignal():
 	y = 0
 	key = "Abacaxi"
 	
+	np.argmax()
 	for i in len(hertz):
-		if hertz[i] in range (1208,1210):
+		if hertz[i] in range (1196,1221):
 			x = 1209
-		elif hertz[i] in range (1335,1337):
+		elif hertz[i] in range (1321,1350):
 			x = 1336
-		elif hertz[i] in range (1476,1478):
+		elif hertz[i] in range (1462,1492):
 			x = 1477
-		elif hertz[i] in range (696,698):
+		elif hertz[i] in range (690,704):
 			y = 697
-		elif hertz[i] in range (769,771):
+		elif hertz[i] in range (762,778):
 			y = 770
-		elif hertz[i] in range (851,853):
+		elif hertz[i] in range (843,861):
 			y = 852
-		elif hertz[i] in range (940,942):
+		elif hertz[i] in range (930,951):
 			y = 941
 
-	if  x == 1209 & y == 697:
-		key = "1"
-	elif x == 1336 & y == 697:
-		key = "2"
-	elif x == 1477 & y == 697:
-		key = "3"		
-	elif x == 1209 & y == 770:
-		key = "4"
-	elif x == 1336 & y == 770:
-		key = "5"
-	elif x == 1477 & y == 770:
-		key = "6"
-	elif x == 1209 & y == 852:
-		key = "7"
-	elif x == 1336 & y == 852:
-		key = "8"
-	elif x == 1477 & y == 852:
-		key = "9"
-	elif x == 1336 & y == 941:
-		key = "0"
-	elif x == 1209 & y == 941:
-		key = "*"
-	elif x == 1477 & y == 941:
-		key = "#"
+	if y == 697:
+		if x == 1209:
+			key = "1"
+		elif x == 1336:
+			key = "2"
+		elif x == 1477:
+			key = "3"
+	elif y == 770:
+		if x == 1209:
+			key = "4"
+		elif x == 1336:
+			key = "5"
+		elif x == 1477:
+			key = "6"
+	elif y == 852:
+		if x == 1209:
+			key = "7"
+		elif x == 1336:
+			key = "8"
+		elif x == 1477:
+			key = "9"
+	elif y == 941:
+		if x == 1209:
+			key = "*"
+		elif x == 1336:
+			key = "0"
+		elif x == 1477:
+			key = "#"
 
 	print(key)
 	return key
