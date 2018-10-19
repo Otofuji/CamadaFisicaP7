@@ -1,0 +1,17 @@
+
+	candidates = []
+	a = np.argmax(amplitude)
+	candidates.append(a)
+	np.delete(amplitude, a)
+	b = np.argmax(amplitude)
+	candidates.append(b)
+	np.delete(amplitude, b)
+	c = np.argmax(amplitude)
+	candidates.append(c)
+	np.delete(amplitude, c)
+	d = np.argmax(amplitude)
+	candidates.append(d)
+	np.delete(amplitude, d)
+	e = np.argmax(amplitude)
+	candidates.append(e)
+	np.delete(amplitude, e)

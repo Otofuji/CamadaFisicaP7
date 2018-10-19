@@ -110,7 +110,7 @@ def signalFrequency(key):
 
 			"1": (generateSin(1209,21,1,44100) + generateSin(697,21,1,44100)),
 			"2": (generateSin(1336,21,1,44100) + generateSin(697,21,1,44100)),
-			"3": (generateSin(1477,21,1,44100) + generateSin(697,21,1,44100)),
+			"3": (generateSin(1477,21,80,44100) + generateSin(697,21,80,44100)),
 			"4": (generateSin(1209,21,1,44100) + generateSin(770,21,1,44100)),
 			"5": (generateSin(1336,21,1,44100) + generateSin(770,21,1,44100)),
 			"6": (generateSin(1477,21,1,44100) + generateSin(770,21,1,44100)),
@@ -199,22 +199,24 @@ def getSignal():
 	y = 0
 	key = "Abacaxi"
 	
+	
 	candidates = []
-	a = np.argmax(amplitude)
+	a = np.argmax(hertz)
 	candidates.append(a)
-	np.delete(amplitude, a)
-	b = np.argmax(amplitude)
+	np.delete(hertz, a)
+	b = np.argmax(hertz)
 	candidates.append(b)
-	np.delete(amplitude, b)
-	c = np.argmax(amplitude)
+	np.delete(hertz, b)
+	c = np.argmax(hertz)
 	candidates.append(c)
-	np.delete(amplitude, c)
-	d = np.argmax(amplitude)
+	np.delete(hertz, c)
+	d = np.argmax(hertz)
 	candidates.append(d)
-	np.delete(amplitude, d)
-	e = np.argmax(amplitude)
+	np.delete(hertz, d)
+	e = np.argmax(hertz)
 	candidates.append(e)
-	np.delete(amplitude, e)
+	np.delete(hertz, e)
+
 
 
 
