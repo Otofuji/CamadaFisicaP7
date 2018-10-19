@@ -55,6 +55,9 @@ def generateSin(freq, amplitude, time, fs):
     x = np.linspace(0.0, time, n)
     s = amplitude*np.sin(freq*x*2*np.pi)
     return (x, s)
+
+
+
 def calcFFT(signal, fs):
     N  = len(signal)
     W = window.hamming(N)
@@ -62,11 +65,17 @@ def calcFFT(signal, fs):
     xf = np.linspace(0.0, 1.0/(2.0*T), N//2)
     yf = fft(signal*W)
     return(xf, np.abs(yf[0:N//2]))
+
+
+
 def plotFFT(signal, fs):
     x,y = calcFFT(signal, fs)
     plt.figure()
     plt.plot(x, np.abs(y))
     plt.title('Fourier')
+
+
+
 ####################################################
 
 
@@ -104,7 +113,7 @@ def signalFrequency(key):
 			"3": (generateSin(1477,21,1,44100) + generateSin(697,21,1,44100)),
 			"4": (generateSin(1209,21,1,44100) + generateSin(770,21,1,44100)),
 			"5": (generateSin(1336,21,1,44100) + generateSin(770,21,1,44100)),
-			"6": (generateSin(1477,21,80,44100) + generateSin(770,21,80,44100)),
+			"6": (generateSin(1477,21,1,44100) + generateSin(770,21,1,44100)),
 			"7": (generateSin(1209,21,1,44100) + generateSin(852,21,1,44100)),
 			"8": (generateSin(1336,21,1,44100) + generateSin(852,21,1,44100)),
 			"9": (generateSin(1477,21,1,44100) + generateSin(852,21,1,44100)),
@@ -118,6 +127,10 @@ def signalFrequency(key):
 		pass
 
 
+
+
+
+
 def play(key):
 	try:
 		sd.play((signalFrequency(key)[1] + signalFrequency(key)[3]), 44100); sd.wait();
@@ -125,6 +138,10 @@ def play(key):
 	except:
 		pass
 
+
+
+
+#sd.play(signalFrequency(str(6))[1] + signalFrequency(str(6))[3], 44100); sd.wait();
 
 def testSignalSound():
 	try:
@@ -144,6 +161,8 @@ def testSignalSound():
 	except:
 		pass
 
+
+
 #testSignalSound();
 
 
@@ -156,11 +175,15 @@ def getKey():
 	except:
 		pass
 
+
+
 #getKey();
 
 
 def plotGeneratedSignal(key):
 	plt.plot(signalFrequency(key)[1][0:1000] + signalFrequency(key)[3][0:1000]); plt.show();
+
+
 
 #play(str(3));
 #plotGeneratedSignal(str(0));
@@ -175,6 +198,7 @@ def getSignal():
 	x = 0
 	y = 0
 	key = "Abacaxi"
+	
 	for i in len(hertz):
 		if hertz[i] in range (1208,1210):
 			x = 1209
@@ -220,8 +244,12 @@ def getSignal():
 	return key
 
 
+
+getSignal();
 def plotFourier(discoverReceivedSignal):
 	plt.plot(signalFrequency(discoverReceivedSignal)[1][0:1000] + signalFrequency(discoverReceivedSignal)[3][0:1000]); plt.show();
+
+
 
 def mainGenerate():
 	try:
@@ -231,6 +259,8 @@ def mainGenerate():
 	
 	except:
 		pass
+
+
 
 #mainGenerate()
 
@@ -244,6 +274,8 @@ def mainReceive():
 	
 	except:
 		pass
+
+
 
 #mainReceive()
 
