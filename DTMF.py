@@ -192,28 +192,40 @@ def getSignal():
 
 	
 
-	abacate = sd.rec(441000, blocking=True);
+	abacate = sd.rec(441000, blocking = True);
 	plt.plot(abacate.T[1]); plt.show();
 	hertz, amplitude = calcFFT(abacate, 4100)
 	x = 0
 	y = 0
 	key = "Abacaxi"
 	
-	np.argmax()
-	for i in len(hertz):
-		if hertz[i] in range (1196,1221):
+	candidates = []
+	a = np.argmax(amplitude)
+	candidates.append(a)
+	amplitude.remove(a)
+	b = np.argmax(amplitude)
+	candidates.append(b)
+	amplitude.remove(b)
+	c = np.argmax(amplitude)
+	candidates.append(c)
+	amplitude.remove(c)
+
+
+
+	for i in len(candidates):
+		if candidates[i] in range (1196,1221):
 			x = 1209
-		elif hertz[i] in range (1321,1350):
+		elif candidates[i] in range (1321,1350):
 			x = 1336
-		elif hertz[i] in range (1462,1492):
+		elif candidates[i] in range (1462,1492):
 			x = 1477
-		elif hertz[i] in range (690,704):
+		elif candidates[i] in range (690,704):
 			y = 697
-		elif hertz[i] in range (762,778):
+		elif candidates[i] in range (762,778):
 			y = 770
-		elif hertz[i] in range (843,861):
+		elif candidates[i] in range (843,861):
 			y = 852
-		elif hertz[i] in range (930,951):
+		elif candidates[i] in range (930,951):
 			y = 941
 
 	if y == 697:
@@ -245,8 +257,11 @@ def getSignal():
 		elif x == 1477:
 			key = "#"
 
-	print(key)
-	return key
+	if key != "Abacaxi":
+		print(key)
+		return key
+	else:
+		pass
 
 
 
